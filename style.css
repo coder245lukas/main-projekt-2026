@@ -1,0 +1,31 @@
+body { 
+    font-family: Arial, sans-serif; 
+    padding: 20px; 
+    background-color: #f4f4f9; 
+}
+
+.kontejner { 
+    max-width: 600px; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+
+h1 { 
+    color: #333; 
+    border-bottom: 2px solid #007BFF; 
+    padding-bottom: 10px; 
+}
+
+.polozka { 
+    padding: 10px 0; 
+    border-bottom: 1px solid #eee; 
+}
+
+.celkem { 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    margin-top: 20px; 
+    color: #d9534f; 
+}
