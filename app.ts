@@ -41,14 +41,14 @@ class AtelieroveFoceni extends FotografickaSluzba {
 // propojení s html
 const objednavka: FotografickaSluzba[] = []; // košík
 
-// Přepínání políček podle výběru v roletce (ID 1 a 2 jsou Akce, zbytek Ateliér)
+// přepínání políček podle výběru v roletce
 document.getElementById('sluzba')?.addEventListener('change', (e) => {
     const jeAkce = parseInt((e.target as HTMLSelectElement).value) <= 2;
     document.getElementById('form-akce')!.style.display = jeAkce ? 'block' : 'none';
     document.getElementById('form-atelier')!.style.display = jeAkce ? 'none' : 'block';
 });
 
-// Funkce, která překreslí košík (volá se po přidání i po smazání)
+// funkce, která obnoví košík po přidání a odebrání
 function vykresliKosik() {
     const vystup = document.getElementById('vystup')!;
     if (objednavka.length === 0) {
@@ -59,7 +59,7 @@ function vykresliKosik() {
     let html = '';
     let celkem = 0;
 
-    // Cyklus projde všechny položky (Polymorfismus)
+    // polymorfismus
     objednavka.forEach((polozka, index) => {
         html += `
             <div class="polozka">
@@ -74,20 +74,20 @@ function vykresliKosik() {
     vystup.innerHTML = html;
 }
 
-// Globální funkce pro smazání položky (musí být na window, aby šla zavolat z HTML)
+// funkce pro smazání položky
 (window as any).smazatPolozku = (index: number) => {
     objednavka.splice(index, 1); // Odstraní 1 položku na daném indexu
     vykresliKosik(); // Znovu vykreslí košík
 };
 
-// Kliknutí na tlačítko PŘIDAT
+// tlačítko přidat
 document.getElementById('btn-pridat')?.addEventListener('click', () => {
     const idSlužby = parseInt((document.getElementById('sluzba') as HTMLSelectElement).value);
     
     // katalog ts
     const data = katalog.find(k => k.id === idSlužby);
 
-    // Ujistíme TypeScript, že data existují, než z nich začneme tahat id, nazev atd.
+    // ujištění zda typescript existuje
     if (!data) {
         alert("Položka nebyla nalezena v ceníku!");
         return; 
@@ -98,7 +98,6 @@ document.getElementById('btn-pridat')?.addEventListener('click', () => {
         if (idSlužby <= 2) {
             const hodiny = Number((document.getElementById('hodiny') as HTMLInputElement).value);
             const km = Number((document.getElementById('km') as HTMLInputElement).value);
-            // Nyní už data.id, data.nazev a data.zakladniSazba nesvítí červeně
             objednavka.push(new FoceniAkce(data.id, data.nazev, data.zakladniSazba, hodiny, km));
         } else {
             const pronajem = Number((document.getElementById('pronajem') as HTMLInputElement).value);

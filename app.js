@@ -68,13 +68,13 @@ var AtelieroveFoceni = /** @class */ (function (_super) {
 }(FotografickaSluzba));
 // propojení s html
 var objednavka = []; // košík
-// Přepínání políček podle výběru v roletce (ID 1 a 2 jsou Akce, zbytek Ateliér)
+// přepínání políček podle výběru v roletce
 (_a = document.getElementById('sluzba')) === null || _a === void 0 ? void 0 : _a.addEventListener('change', function (e) {
     var jeAkce = parseInt(e.target.value) <= 2;
     document.getElementById('form-akce').style.display = jeAkce ? 'block' : 'none';
     document.getElementById('form-atelier').style.display = jeAkce ? 'none' : 'block';
 });
-// Funkce, která překreslí košík (volá se po přidání i po smazání)
+// funkce, která obnoví košík po přidání a odebrání
 function vykresliKosik() {
     var vystup = document.getElementById('vystup');
     if (objednavka.length === 0) {
@@ -83,7 +83,7 @@ function vykresliKosik() {
     }
     var html = '';
     var celkem = 0;
-    // Cyklus projde všechny položky (Polymorfismus)
+    // polymorfismus
     objednavka.forEach(function (polozka, index) {
         html += "\n            <div class=\"polozka\">\n                <span>".concat(polozka.getNazev(), " - <strong>").concat(polozka.spoctiCenu(), " K\u010D</strong></span>\n                <button class=\"btn-smazat\" onclick=\"smazatPolozku(").concat(index, ")\">Odebrat</button>\n            </div>\n        ");
         celkem += polozka.spoctiCenu();
@@ -91,17 +91,17 @@ function vykresliKosik() {
     html += "<div class=\"celkem\">Celkem: ".concat(celkem, " K\u010D</div>");
     vystup.innerHTML = html;
 }
-// Globální funkce pro smazání položky (musí být na window, aby šla zavolat z HTML)
+// funkce pro smazání položky
 window.smazatPolozku = function (index) {
     objednavka.splice(index, 1); // Odstraní 1 položku na daném indexu
     vykresliKosik(); // Znovu vykreslí košík
 };
-// Kliknutí na tlačítko PŘIDAT
+// tlačítko přidat
 (_b = document.getElementById('btn-pridat')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function () {
     var idSlužby = parseInt(document.getElementById('sluzba').value);
     // katalog ts
     var data = katalog.find(function (k) { return k.id === idSlužby; });
-    // Ujistíme TypeScript, že data existují, než z nich začneme tahat id, nazev atd.
+    // ujištění zda typescript existuje
     if (!data) {
         alert("Položka nebyla nalezena v ceníku!");
         return;
@@ -111,7 +111,6 @@ window.smazatPolozku = function (index) {
         if (idSlužby <= 2) {
             var hodiny = Number(document.getElementById('hodiny').value);
             var km = Number(document.getElementById('km').value);
-            // Nyní už data.id, data.nazev a data.zakladniSazba nesvítí červeně
             objednavka.push(new FoceniAkce(data.id, data.nazev, data.zakladniSazba, hodiny, km));
         }
         else {
