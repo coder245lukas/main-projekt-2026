@@ -1,31 +1,17 @@
-body { 
-    font-family: Arial, sans-serif; 
-    padding: 20px; 
-    background-color: #f4f4f9; 
-}
+/* děláno pomoci AI*/
+body { font-family: sans-serif; background: #f0f2f5; padding: 20px; color: #333; }
+h1 { text-align: center; }
 
-.kontejner { 
-    max-width: 600px; 
-    background: white; 
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-}
+/* Responzivní rozvržení */
+.kontejner { display: flex; flex-wrap: wrap; gap: 20px; max-width: 900px; margin: 0 auto; }
+.panel { background: white; padding: 20px; border-radius: 8px; flex: 1; min-width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-h1 { 
-    color: #333; 
-    border-bottom: 2px solid #007BFF; 
-    padding-bottom: 10px; 
-}
+/* Vzhled prvků */
+input, select { width: 100%; padding: 8px; margin: 5px 0 15px; box-sizing: border-box; }
+button { padding: 10px; border: none; border-radius: 5px; cursor: pointer; color: white; }
+.btn-hlavni { background: #007bff; width: 100%; font-weight: bold; }
+.btn-smazat { background: #dc3545; padding: 5px 10px; } /* Červené tlačítko smazat */
 
-.polozka { 
-    padding: 10px 0; 
-    border-bottom: 1px solid #eee; 
-}
-
-.celkem { 
-    font-size: 1.2em; 
-    font-weight: bold; 
-    margin-top: 20px; 
-    color: #d9534f; 
-}
+/* Platí pro položky v košíku */
+.polozka { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding: 10px 0; }
+.celkem { font-size: 1.3em; font-weight: bold; text-align: right; margin-top: 15px; }

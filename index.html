@@ -3,16 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Správa focení - Nabídka</title>
+    <title>Správa focení</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <h1>Správa focení</h1>
+    
     <div class="kontejner">
-        <h1>Kalkulace fotografických služeb</h1>
-        <div id="vystup">Načítám data...</div> 
+        <div class="panel">
+            <h2>Nová položka</h2>
+            <select id="sluzba">
+                <option value="1">Svatba (Akce)</option>
+                <option value="2">Firemní akce (Akce)</option>
+                <option value="3">Portrét (Ateliér)</option>
+                <option value="4">Produktová foto (Ateliér)</option>
+            </select>
+
+            <div id="form-akce">
+                Hodiny: <input type="number" id="hodiny" value="1" min="1">
+                Kilometry: <input type="number" id="km" value="0" min="0">
+            </div>
+
+            <div id="form-atelier" style="display: none;">
+                Pronájem ateliéru: <input type="number" id="pronajem" value="1500" min="0">
+                Počet fotek: <input type="number" id="fotky" value="10" min="1">
+                Cena za retuš: <input type="number" id="cena-fotka" value="350" min="0">
+            </div>
+
+            <button id="btn-pridat" class="btn-hlavni">Přidat do objednávky</button>
+        </div>
+
+        <div class="panel">
+            <h2>Vaše objednávka</h2>
+            <div id="vystup">Košík je prázdný.</div> 
+        </div>
     </div>
 
-    <script type="module" src="app.js"></script>
+    <script src="katalog.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
