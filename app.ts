@@ -76,8 +76,8 @@ function vykresliKosik() {
 
 // funkce pro smazání položky
 (window as any).smazatPolozku = (index: number) => {
-    objednavka.splice(index, 1); // Odstraní 1 položku na daném indexu
-    vykresliKosik(); // Znovu vykreslí košík
+    objednavka.splice(index, 1); // odstraní 1 položku na daném indexu
+    vykresliKosik(); // znovu vykreslí košík
 };
 
 // tlačítko přidat
