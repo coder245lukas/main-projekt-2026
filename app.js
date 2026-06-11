@@ -1,4 +1,4 @@
-// TŘÍDY s validací proti záporným číslům
+/// <reference path="katalog.ts" />
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -15,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var _a, _b;
+// TŘÍDY s validací proti záporným číslům
 var FotografickaSluzba = /** @class */ (function () {
     function FotografickaSluzba(id, nazev, zakladniSazba) {
         this.id = id;
@@ -93,8 +94,8 @@ function vykresliKosik() {
 }
 // funkce pro smazání položky
 window.smazatPolozku = function (index) {
-    objednavka.splice(index, 1); // Odstraní 1 položku na daném indexu
-    vykresliKosik(); // Znovu vykreslí košík
+    objednavka.splice(index, 1); // odstraní 1 položku na daném indexu
+    vykresliKosik(); // znovu vykreslí košík
 };
 // tlačítko přidat
 (_b = document.getElementById('btn-pridat')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function () {

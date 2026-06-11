@@ -1,3 +1,5 @@
+/// <reference path="katalog.ts" />
+
 // TŘÍDY s validací proti záporným číslům
 
 abstract class FotografickaSluzba {
