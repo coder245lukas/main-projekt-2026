@@ -5,7 +5,7 @@ interface KatalogPolozka {
     zakladniSazba: number;
     popis: string;
 }
-//katalog
+//katalog s nabídkou služeb, který zobrazuje v roletce
 const katalog: KatalogPolozka[] = [
     { id: 1, nazev: 'Svatba', typ: 'akce', zakladniSazba: 1800, popis: 'Reportáž ze svatebního dne' },
     { id: 2, nazev: 'Firemní akce', typ: 'akce', zakladniSazba: 1200, popis: 'Dokumentace firemní události' },
